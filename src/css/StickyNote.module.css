@@ -1,0 +1,29 @@
+.stickyNote{
+  background-color: crimson !important;
+  color: white;
+  border-radius: 10px;
+  padding: 0px 10px 10px 10px;
+  position: absolute;
+}
+
+.stickyNoteHead{
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid gray;
+}
+
+.deleteIcon{
+  font-size: 20px;
+  margin:0px 0px 5px 0px;
+  cursor: pointer;
+}
+
+.moveIcon{
+  color: white;
+  font-size: 20px;
+  cursor: move;
+}
+
+.stickyNoteBody{
+  padding: 5px 0px 0px 0px;
+}
