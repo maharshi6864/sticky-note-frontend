@@ -18,16 +18,22 @@ const StickyNote = forwardRef((props, ref) => {
       style={{
         top: `${props.note.position.y}px`,
         left: `${props.note.position.x}px`,
+        backgroundColor: `${props.note.color}`,
       }}
       className={`${style.stickyNote}`}
     >
       <div style={{ width: "18rem" }}>
         <div className={`${style.stickyNoteHead}`}>
-          <span className={`${style.moveIcon}`} onMouseDown={props.onMouseDown}>
+          <span
+            className={`${style.moveIcon}`}
+            style={{ mixBlendMode: "difference" }}
+            onMouseDown={props.onMouseDown}
+          >
             <IoMenu />
           </span>
           <span
             className={`${style.deleteIcon}`}
+            style={{ mixBlendMode: "difference" }}
             onClick={() => {
               handleNoteDelete(props.note.id);
             }}
@@ -35,7 +41,10 @@ const StickyNote = forwardRef((props, ref) => {
             <MdDeleteOutline />
           </span>
         </div>
-        <div className={`${style.stickyNoteBody}`}>
+        <div
+          className={`${style.stickyNoteBody}`}
+          style={{ mixBlendMode: "difference" }}
+        >
           <p className="card-text">{props.note.title}</p>
         </div>
       </div>

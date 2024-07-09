@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 
 const stickyNotesStore = createSlice({
-  name: "stickyNotesStore", initialState: { notes: [{ id: 1, title: "Complete this react project today", position: { x: "150px", y: "100px" } }], idCount: 100 }, reducers: {
+  name: "stickyNotesStore", initialState: { notes: [{ id: 1, title: "Complete this react project today", position: { x: "150px", y: "100px" },color:"black" }], idCount: 100 }, reducers: {
     deleteNote: (state, action) => {
       //Write the logic to delete the note 
       console.log(action.payload.id, "Deleting the note");

@@ -1,6 +1,5 @@
 .stickyNote{
-  background-color: crimson !important;
-  color: white;
+  color: #fff;
   border-radius: 10px;
   padding: 0px 10px 10px 10px;
   position: absolute;
@@ -19,7 +18,6 @@
 }
 
 .moveIcon{
-  color: white;
   font-size: 20px;
   cursor: move;
 }
