@@ -1,6 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
-import StickyNote from "./StickyNote";
+import StickyNote from "../components/StickyNote";
 import { createRef, useRef } from "react";
+import { stickyNotesAction } from "../store/stickyNotesStore";
+import { changeNotePosition } from "../apis/home";
 
 const StickyNotes = () => {
   const { notes } = useSelector((store) => store.stickyNotesStore);
@@ -14,7 +16,8 @@ const StickyNotes = () => {
     const rect = noteRef.getBoundingClientRect();
     const offSetX = e.clientX - rect.left;
     const offSetY = e.clientY - rect.top;
-    const startPos = note.position;
+    const startPosX = note.positionX;
+    const startPosY = note.positionY;
 
     const handleMouseMove = (e) => {
       const newX = e.clientX - offSetX;
@@ -29,13 +32,14 @@ const StickyNotes = () => {
       document.removeEventListener("mouseup", handleMouseUp);
 
       const finalPosition = noteRef.getBoundingClientRect();
-      const newPostion = { x: finalPosition.left, y: finalPosition.top };
+      const newPostionX = finalPosition.left;
+      const newPostionY = finalPosition.top;
 
       if (checkForOverLap(note.id)) {
-        noteRef.style.left = `${startPos.x}px`;
-        noteRef.style.top = `${startPos.y}px`;
+        noteRef.style.left = `${startPosX}px`;
+        noteRef.style.top = `${startPosY}px`;
       } else {
-        updateNotePostion(note.id, newPostion);
+        updateNotePostion(note.id, { newPostionX, newPostionY });
       }
     };
 
@@ -62,9 +66,19 @@ const StickyNotes = () => {
     });
   };
 
-  const updateNotePostion = (id, postion) => {
-    //To do create a method to update the postion of the note in
-    // redux.
+  const updateNotePostion = (id, position) => {
+    changeNotePosition({
+      id: parseInt(id),
+      positionX: position.newPostionX,
+      positionY: position.newPostionY,
+    });
+    dispatch(
+      stickyNotesAction.updateNotePostion({
+        id,
+        positionX: position.x,
+        positionY: position.y,
+      })
+    );
   };
 
   return (

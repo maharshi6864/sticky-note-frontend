@@ -4,6 +4,7 @@
   display: flex;
   justify-content: center;
   padding: 15px 0px;
+  position:fixed;
 }
 
 .inputForm{
@@ -21,4 +22,12 @@
   border-radius: 0.375rem;
   border: 1px solid grey;
   margin-right: 10px;
+}
+
+.colorOption{
+  border-radius: 10px;
+  width: 50px;
+  padding: 17px;
+  margin-right: 10px;
+  border: 1px solid grey;
 }
